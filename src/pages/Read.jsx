@@ -11,12 +11,9 @@ const Read = () => {
       const res = await fetch(
         "https://6707a6718e86a8d9e42c549f.mockapi.io/Read/"
       );
-
       const data = await res.json();
-
       setReadItems(data);
     };
-
     fetchReadItems();
   }, []);
 
@@ -25,7 +22,6 @@ const Read = () => {
       await fetch(`https://668abf0d2c68eaf3211db654.mockapi.io/Read/${id}`, {
         method: "DELETE",
       });
-
       setReadItems(Readitems.filter((item) => item.id !== id));
     } catch (error) {
       console.error("Error deleting Read item:", error);
@@ -39,31 +35,21 @@ const Read = () => {
       icon: "warning",
       background: "#503d2a",
       showCancelButton: true,
-
       confirmButtonColor: "#bc9e80",
-
       cancelButtonColor: "#bc9e80",
-
       confirmButtonText: "Yes, delete it!",
-
       customClass: {
         title: "text-white",
-
         text: "text-gray-300",
       },
     }).then((result) => {
       if (result.isConfirmed) {
         deleteReadItem(id);
-
         Swal.fire({
           title: "Deleted!",
-
           text: "Your book has been deleted.",
-
           icon: "success",
-
           background: "#503d2a",
-
           confirmButtonColor: "#bc9e80",
         });
       }
@@ -73,12 +59,10 @@ const Read = () => {
   return (
     <>
       <Navbar />
-
       <div className="bg-[#bc9e80] h-screen flex items-center justify-center">
         <h1 className="text-3xl font-bold mb-6 text-center text-white">
           Your Read books
         </h1>
-
         {Readitems.length === 0 ? (
           <p className="text-lg text-center text-white">Your Read is empty.</p>
         ) : (
@@ -94,16 +78,13 @@ const Read = () => {
                     alt={item.title}
                     className="w-24 h-24 object-cover rounded"
                   />
-
                   <div>
                     <h2 className="text-lg sm:text-xl font-semibold text-white">
                       {item.title}
                     </h2>
-
                     <p className="text-gray-300">{item.author}</p>
                   </div>
                 </div>
-
                 <button
                   className="mt-2 sm:mt-0 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
                   onClick={() => handleDeleteClick(item.id)}
@@ -115,7 +96,6 @@ const Read = () => {
           </div>
         )}
       </div>
-
       <Footer />
     </>
   );
